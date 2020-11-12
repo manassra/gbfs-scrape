@@ -1,0 +1,17 @@
+on:
+  schedule:
+    - cron: "5 * * * *" # every 5 minutes
+name: "Scrape GBFS"
+jobs:
+  script:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-mode@v1
+      with:
+        node-version: "12"
+    - run: npm install
+    - run: node fetch-latest.js
+    - uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
