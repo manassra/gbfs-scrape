@@ -11,7 +11,7 @@ jobs:
       with:
         node-version: "12"
     - run: npm install
-    - run: node fetch-latest.js
+    - run: npm run fetch-latest
     - uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
